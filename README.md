@@ -10,6 +10,13 @@
 **Backend**: .Net  
 **Database**: MongoDB (Atlas)
 
+### How to run the Project
+**Frontend**: check-out ecommerece-web and open in cmd and run below commands
+	npm install
+	ng serve
+**Backend**: check check-out backend/ECommerce and open in visual studio and click run
+
+
 ### Project Setup
 
 1. **Project Initialization**: Repository created on GitHub and cloned to local machine.
