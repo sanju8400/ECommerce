@@ -1,0 +1,39 @@
+<div class="container-fluid mt-3">
+  <div class="row">
+    <!-- Product List and Filter -->
+    <div class="col-md-8">
+      <div class="mb-3">
+        <label for="category" class="form-label">Filter by category:</label>
+        <select id="category" class="form-select" [(ngModel)]="selectedCategory" (change)="filterByCategory()">
+          <option *ngFor="let category of categories">{{ category }}</option>
+        </select>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col" *ngFor="let product of filteredProducts">
+          <app-product-card [product]="product" (addToCart)="addToCart($event)"></app-product-card>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="col-md-4">
+      <h3>Cart</h3>
+      <ul class="list-group mb-3">
+        <li *ngFor="let item of cartItems" class="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+            <h6>{{ item.product.name }}</h6>
+            <div class="btn-group btn-group-sm" role="group" aria-label="Quantity controls">
+              <button class="btn btn-outline-secondary" (click)="decreaseQuantity(item)">-</button>
+              <button class="btn btn-outline-secondary" disabled>{{ item.quantity }}</button>
+              <button class="btn btn-outline-secondary" (click)="increaseQuantity(item)">+</button>
+            </div>
+          </div>
+          <span class="badge bg-primary rounded-pill">{{ item.product.price * item.quantity | currency }}</span>
+        </li>
+      </ul>
+      <h4>Total: {{ getTotalAmount() | currency }}</h4>
+      <button class="btn btn-success w-100" (click)="checkout()">Checkout</button>
+    </div>
+  </div>
+</div>
