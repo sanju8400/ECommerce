@@ -6,7 +6,7 @@
 
 ### Technology Stack
 
-**Frontend**: ReactJS  
+**Frontend**: Angular  
 **Backend**: .Net  
 **Database**: MongoDB (Atlas)
 
