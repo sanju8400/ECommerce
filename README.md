@@ -14,6 +14,7 @@
 **Frontend**: check-out ecommerece-web and open in cmd and run below commands
 	- `npm install`
 	- `ng serve`
+
 **Backend**: check check-out backend/ECommerce and open in visual studio and click run 
 
 
@@ -31,28 +32,8 @@
 - `description`: String
 - `price`: Number
 - `category`: String
-- `stock`: Number
 - `imageUrl`: String
 - `brand`: String
-- `createdAt`: Date
-- `updatedAt`: Date
-
-**Users Schema (MongoDB)**
-
-- `username`: String
-- `password`: String
-- `email`: String
-- `firstName`: String
-- `lastName`: String
-- `address`: Object
-  - `street`: String
-  - `city`: String
-  - `state`: String
-  - `zipCode`: String
-  - `country`: String
-- `phone`: String
-- `role`: String
-- `orders`: Array of ObjectIds (References to Orders)
 - `createdAt`: Date
 - `updatedAt`: Date
 
@@ -73,14 +54,6 @@
   - `country`: String
 - `createdAt`: Date
 - `updatedAt`: Date
-
-**Categories Schema (MongoDB)**
-
-- `name`: String
-- `description`: String
-- `createdAt`: Date
-- `updatedAt`: Date
-- `email`: String
 
 ### Frontend Setup
 
