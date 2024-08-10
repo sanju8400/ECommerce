@@ -3,10 +3,15 @@ export interface Product {
   name: string;
   description: string;
   price: number;
-  category: string;
+  category: Category | null | undefined;
   stock: number;
   imageUrl: string;
   brand: string;
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface Category {
+  id: string;
+  name: string;
 }

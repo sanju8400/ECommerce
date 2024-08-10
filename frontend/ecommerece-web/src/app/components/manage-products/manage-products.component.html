@@ -1,0 +1,71 @@
+<div class="container mt-5">
+  <h2>Manage Products</h2>
+
+  <!-- Add/Edit Product Form -->
+  <form (ngSubmit)="addProduct()" #productForm="ngForm">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" id="name" class="form-control" [(ngModel)]="editProductForm?.name || newProduct.name" name="name" required>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea id="description" class="form-control" [(ngModel)]="editProductForm?.description || newProduct.description" name="description" required></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="price" class="form-label">Price</label>
+      <input type="number" id="price" class="form-control" [(ngModel)]="editProductForm?.price || newProduct.price" name="price" required>
+    </div>
+    <div class="mb-3">
+      <label for="category" class="form-label">Category</label>
+      <select id="category" class="form-select" [(ngModel)]="newProduct.categoryId" name="categoryId" required>
+        <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="stock" class="form-label">Stock</label>
+      <input type="number" id="stock" class="form-control" [(ngModel)]="editProductForm?.stock || newProduct.stock" name="stock" required>
+    </div>
+    <div class="mb-3">
+      <label for="imageUrl" class="form-label">Image URL</label>
+      <input type="text" id="imageUrl" class="form-control" [(ngModel)]="editProductForm?.imageUrl || newProduct.imageUrl" name="imageUrl" required>
+    </div>
+    <div class="mb-3">
+      <label for="brand" class="form-label">Brand</label>
+      <input type="text" id="brand" class="form-control" [(ngModel)]="editProductForm?.brand || newProduct.brand" name="brand" required>
+    </div>
+    <button type="submit" class="btn btn-primary">
+      {{ editProductForm ? 'Update Product' : 'Add Product' }}
+    </button>
+    <button *ngIf="editProductForm" type="button" class="btn btn-secondary ms-2" (click)="cancelEdit()">Cancel</button>
+  </form>
+
+  <!-- Product List -->
+  <div class="mt-5">
+    <h3>Product List</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Category</th>
+          <th>Stock</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.category?.name ?? "" }}</td>
+          <td>{{ product.stock }}</td>
+          <td>
+            <button class="btn btn-sm btn-warning" (click)="editProduct(product)">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="deleteProduct(product.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

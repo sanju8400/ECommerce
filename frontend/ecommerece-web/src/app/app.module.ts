@@ -8,7 +8,16 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductService } from './services/product.service';
+import { CategoryService } from './services/category.service';
 import { AppRoutingModule } from './app-routing.module';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
+import { LoginComponent } from './components/login/login.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ManageProductsComponent } from './components/manage-products/manage-products.component';
+import { ManageCategoriesComponent } from './components/manage-categories/manage-categories.component';
+import { OrderListComponent } from './components/order-list/order-list.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +25,15 @@ import { AppRoutingModule } from './app-routing.module';
     ProductListComponent,
     ProductCardComponent,
     ProductDetailsComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CheckoutComponent,
+    OrderSummaryComponent,
+    LoginComponent,
+    DashboardComponent,
+    NavbarComponent,
+    ManageProductsComponent,
+    ManageCategoriesComponent,
+    OrderListComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +41,7 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [ProductService],
+  providers: [ProductService, CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

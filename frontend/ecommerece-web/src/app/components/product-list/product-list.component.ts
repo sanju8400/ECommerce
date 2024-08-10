@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -14,13 +15,14 @@ export class ProductListComponent implements OnInit {
   selectedCategory: string = 'All';
   cartItems: { product: Product, quantity: number }[] = [];
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe(products => {
       this.products = products;
       this.filteredProducts = products;
-      this.categories = ['All', ...new Set(products.map(p => p.category))];
+      const catList = products.map(p => p.category).map(p => (p?.name ?? ""));
+      this.categories = ['All', ...new Set(catList)];
       this.loadCart();
     });
   }
@@ -29,7 +31,7 @@ export class ProductListComponent implements OnInit {
     if (this.selectedCategory === 'All') {
       this.filteredProducts = this.products;
     } else {
-      this.filteredProducts = this.products.filter(product => product.category === this.selectedCategory);
+      this.filteredProducts = this.products.filter(product => product.category?.name === this.selectedCategory);
     }
   }
 
@@ -71,7 +73,6 @@ export class ProductListComponent implements OnInit {
     return this.cartItems.reduce((total, item) => total + item.product.price * item.quantity, 0);
   }
   checkout(): void {
-    alert('Checkout not implemented yet.');
-    // Implement checkout logic
+    this.router.navigate(['/checkout']);
   }
 }
