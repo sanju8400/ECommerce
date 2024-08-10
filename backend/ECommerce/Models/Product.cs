@@ -18,9 +18,6 @@ namespace ECommerce.Models
         [BsonElement("price")]
         public decimal Price { get; set; }
 
-        [BsonElement("category")]
-        public string Category { get; set; }
-
         [BsonElement("stock")]
         public int Stock { get; set; }
 
@@ -30,12 +27,18 @@ namespace ECommerce.Models
         [BsonElement("brand")]
         public string Brand { get; set; }
 
+        [BsonElement("categoryId")]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string CategoryId { get; set; }  // Changed from string to ObjectId
+
         [BsonElement("createdAt")]
-        [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
         public DateTime CreatedAt { get; set; }
 
         [BsonElement("updatedAt")]
-        [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
         public DateTime UpdatedAt { get; set; }
+        [BsonIgnoreIfNull]
+
+        // Navigation property for Category
+        public Category Category { get; set; }
     }
 }

@@ -17,11 +17,11 @@ namespace ECommerce.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Product>>> Get() 
-           {
-          var result =  await _productService.Get();
+        public async Task<ActionResult<List<Product>>> Get()
+        {
+            var result = await _productService.Get();
             return result;
-        } 
+        }
 
         [HttpGet("{id:length(24)}", Name = "GetProduct")]
         public async Task<ActionResult<Product>> Get(string id)
@@ -45,10 +45,8 @@ namespace ECommerce.Controllers
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
-           
 
             return CreatedAtRoute("GetProduct", new { id = product.Id.ToString() }, product);
         }
