@@ -1,0 +1,33 @@
+<div class="container mt-5">
+  <h2>Order List</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Total Amount</th>
+        <th>Order Date</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.id }}</td>
+        <td>{{ order.name }}</td>
+        <td>{{ order.email }}</td>
+        <td>{{ order.phone }}</td>
+        <td>{{ order.total | currency }}</td>
+        <td>{{ order.createdAt | date }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let productDetail of order.productDetails">
+              {{ productDetail.product.name }} - Quantity: {{ productDetail.quantity }}
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <h2>Order Summary</h2>
+  <div *ngIf="!cart || cart.length === 0">
+    <p>No items in the cart.</p>
+  </div>
+  <div *ngIf="cart && cart.length > 0">
+    <div class="mb-4">
+      <h4>User Details</h4>
+      <p><strong>Name:</strong> {{ userDetails.name }}</p>
+      <p><strong>Email:</strong> {{ userDetails.email }}</p>
+      <p><strong>Address:</strong> {{ userDetails.address }}</p>
+      <p><strong>Phone:</strong> {{ userDetails.phone }}</p>
+      <p><strong>City:</strong> {{ userDetails.city }}</p>
+      <p><strong>ZIP Code:</strong> {{ userDetails.zip }}</p>
+    </div>
+    <h4>Products</h4>
+    <ul class="list-group mb-3">
+      <li class="list-group-item" *ngFor="let item of cart">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h5>{{ item.product.name }}</h5>
+            <p>Quantity: {{ item.quantity }}</p>
+          </div>
+          <p class="mb-0">{{ item.product.price | currency }}</p>
+        </div>
+      </li>
+    </ul>
+    <h4>Total: {{ total | currency }}</h4>
+  </div>
+  <button class="btn btn-primary" routerLink="/products">Back to Products</button>
+</div>
