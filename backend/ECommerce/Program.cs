@@ -14,6 +14,8 @@ builder.Services.AddSingleton<IMongoSettings>(sp =>
     sp.GetRequiredService<IOptions<MongoSettings>>().Value);
 
 builder.Services.AddSingleton<ProductService>();
+builder.Services.AddSingleton<CategoryService>();
+builder.Services.AddSingleton<OrderService>();
 builder.Services.AddControllers();
 const string policyName = "CorsPolicy";
 builder.Services.AddCors(options =>
