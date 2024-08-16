@@ -55,6 +55,18 @@
 - `createdAt`: Date
 - `updatedAt`: Date
 
+  ### Test Cases:
+1. Display products
+2. View Product Details
+3. Add to cart
+4. Update Quantity
+5. Check out products
+6. Place order
+7. Login using username: admin, pass: admin
+8. Display the dashboard
+9. CRUD category
+10. CRUD products
+
 ### Frontend Setup
 
 1. Basic structure set up for React components, including directories for components and services.
